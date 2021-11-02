@@ -5,7 +5,7 @@ import MyContext from './MyContext'
 const MyProvider = (props) => {
 
     const [categories, setCategories]= useState([])
-    const [select, setSelect]= useState("animal")
+    const [select, setSelect]= useState("")
     const [joke, setJoke]= useState("")
 
 
@@ -25,24 +25,28 @@ const MyProvider = (props) => {
 
     const url = "https://api.chucknorris.io/jokes/random?category="
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await fetch(`${url}${select}`)
-                const data = await response.json()
-                setJoke(data.value)
-            } catch (error) {
-                console.log(error);
+        const getJoke = () => {
+
+            const getData = async () => {
+                try {
+                    const response = await fetch(`${url}${select}`)
+                    const data = await response.json()
+                    setJoke(data.value)
+                } catch (error) {
+                    console.log(error);
+                }
             }
+            getData()    
+
         }
-        getData()    
-    },[select])
+   
+    
     
 
 
 
     return (
-        <MyContext.Provider value={{categories,select, setSelect,joke}} >
+        <MyContext.Provider value={{categories,select, setSelect,joke, getJoke}} >
             {props.children}
         </MyContext.Provider>
     )

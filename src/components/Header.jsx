@@ -8,7 +8,8 @@ const Header = () => {
     return (
         <div className="header" >
            <label >CHOOSE A CATEGORY</label>
-            <select value={select} onChange={(e)=> setSelect(e.target.value) } >
+            <select defaultValue={select} onChange={(e)=> setSelect(e.target.value) } >
+                <option value="default"  >choose a category</option>
                 {categories.map((category,index) => <option key={index} value={category}>{category}</option> )}   
             </select> 
         </div>
