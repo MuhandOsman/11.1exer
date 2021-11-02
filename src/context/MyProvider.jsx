@@ -5,7 +5,7 @@ import MyContext from './MyContext'
 const MyProvider = (props) => {
 
     const [categories, setCategories]= useState([])
-    const [select, setSelect]= useState("dev")
+    const [select, setSelect]= useState("animal")
     const [joke, setJoke]= useState("")
 
 
